@@ -39,7 +39,7 @@ public class LRParser {
             }
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            String input = reader.readLine().trim() + " $";
+            String input = reader.readLine().trim();
             String[] inputExpressionTokens = input.split("\\s+");
             reader.close();
 
