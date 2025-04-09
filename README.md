@@ -128,17 +128,27 @@ The parser relies on configuration files located in `src/main/resources/config/`
 
 ## How to Run
 
+### 📥 1. Clone the Repository
+
+First, clone the project from GitHub:
+
+```bash
+git clone https://github.com/YusufOkr0/LR-Parser-In-Java.git
+cd LR-Parser-in-java
+```
+
 1.  **Prerequisites:**
     *   Java Development Kit (JDK) 17.
-    *   Apache Maven.
-2.  **Ensure Files:**
-    *   Make sure your grammar, action table, and goto table files are correctly placed in `src/main/resources/config/`.
-    *   Place your input files (`input-01.txt`, etc.) in `src/main/resources/inputs/`.
-3.  **Execute:** Open a terminal in the project root directory and run:
-    ```bash
-    mvn clean install
-    ```
-5.  **Check Output:** The trace and parse tree output files will be generated in the `target/output-traces/` directory.
+2. **Execute:** Open a terminal in the project root directory and run:
+    *   Open the project in IntelliJ IDEA or your preferred Java IDE.
+
+    * Navigate to: src/main/java/com/yusufokr0/Main.java
+
+    * the green Run button next to the main method.
+
+    * The parser will process all input files and generate output files automatically.
+   
+3.  **Check Output:** The trace and parse tree output files will be generated in the `target/output-traces/` directory.
 
 ## Example Output For Given Input (`id + id * id $`)
 
