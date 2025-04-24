@@ -1,6 +1,7 @@
 package com.yusufokr0.dataloader;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,24 +20,35 @@ public class ActionTableLoader {
             throw new RuntimeException("ACTION TABLE FILE NOT FOUND IN THE CLASSPATH.");
         }
 
-        try (InputStreamReader inputStreamReader = new InputStreamReader(actionTableFile);
+        try (InputStreamReader inputStreamReader = new InputStreamReader(actionTableFile, StandardCharsets.UTF_8);
              BufferedReader reader = new BufferedReader(inputStreamReader)) {
+
+            String headerLine = reader.readLine();
+            String[] headerParts = headerLine.trim().split("\\s+");
+            String[] tokens = new String[headerParts.length - 1];
+            for (int i = 1; i < headerParts.length; i++) {
+                tokens[i-1] = headerParts[i];
+            }
 
             String line;
             while ((line = reader.readLine()) != null) {
-                Map<String,String> actions = new HashMap<>();
+                Map<String, String> actions = new HashMap<>();
 
-                String[] parts = line.trim().split("\\s");
+                String[] parts = line.trim().split("\\s+");
+
                 int state = Integer.parseInt(parts[0]);
 
-                for(int i = 1; i < parts.length - 1; i += 2){
-                    String token = parts[i];
-                    String action = parts[i + 1];
-                    actions.put(token, action);
+                for (int i = 1; i < parts.length; i+=1){
+                    if (parts[i].equals("-")) {
+                        continue;
+                    }
+                    actions.put(tokens[i-1], parts[i]);
+
                 }
-                actionTable.put(state,actions);
+                actionTable.put(state, actions);
 
             }
+
             return actionTable;
 
         } catch (IOException e) {

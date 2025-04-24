@@ -72,7 +72,7 @@ public class LRParser {
                     actionStr = "accept";
                     traceTable.add(stackStr + "\t" + inputStr + "\t" + actionStr);
                     break;
-                } else if (action.startsWith("S")) {
+                } else if (action.startsWith("s")) {
                     int nextState = Integer.parseInt(action.substring(1));
                     actionStr = "Shift " + nextState;
                     traceTable.add(stackStr + "\t" + inputStr + "\t" + actionStr);
@@ -86,7 +86,7 @@ public class LRParser {
                     }
 
                     inputPointer++;
-                } else if (action.startsWith("R")) {
+                } else if (action.startsWith("r")) {
                     int ruleNum = Integer.parseInt(action.substring(1));
                     GrammarRule rule = grammarRules.get(ruleNum - 1);
                     String[] rightSide = rule.getRight().split("\\s+");
