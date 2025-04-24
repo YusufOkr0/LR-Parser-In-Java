@@ -18,20 +18,26 @@ public class GotoTableLoader {
 
         try (InputStreamReader inputStreamReader = new InputStreamReader(gotoFile);
              BufferedReader reader = new BufferedReader(inputStreamReader)) {
-
+            String headerLine = reader.readLine();
+            String[] headerParts = headerLine.trim().split("\\s+");
+            String[] tokens = new String[headerParts.length-1];
+            for(int i= 1;i<headerParts.length;i++){
+                tokens[i-1] = headerParts[i];
+            }
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.trim().split(" ");
-                int state = Integer.parseInt(parts[0]);
                 Map<String, Integer> gotos = new HashMap<>();
+                String[] stringParts = line.trim().split("\\s+");
 
-                if (parts.length > 1) {
-                    for (int i = 1; i < parts.length; i += 2) {
-                        String nonTerminal = parts[i];
-                        int nextState = Integer.parseInt(parts[i + 1]);
-                        gotos.put(nonTerminal, nextState);
+                int state = Integer.parseInt(stringParts[0]);
+
+                for (int i = 1; i < stringParts.length; i++) {
+                    if (stringParts[i].equals("-")) {
+                        continue;
                     }
+                    gotos.put(tokens[i - 1], Integer.parseInt(stringParts[i]));
                 }
+
                 gotoTable.put(state, gotos);
             }
 
