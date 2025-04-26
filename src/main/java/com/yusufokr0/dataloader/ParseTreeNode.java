@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParseTreeNode {
-    private String value;
-    private List<ParseTreeNode> children;
+    public String value;
+    public List<ParseTreeNode> children;
 
     public ParseTreeNode(String value) {
         this.value = value;

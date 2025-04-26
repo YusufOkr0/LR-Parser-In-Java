@@ -22,7 +22,7 @@ public class Main {
         );
 
         for(int i = 1;i <= 9;i++){
-            lrParser.parse(String.format("input-0%s.txt",i));
+            lrParser.parse(String.format("input-0%s.txt",i));us
         }
 
     }
