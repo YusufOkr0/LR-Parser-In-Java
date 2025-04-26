@@ -1,0 +1,69 @@
+===== LR PARSING ERROR LOG =====
+Input Identifier: input-07
+Original Input String: id + * id $
+Timestamp: 2025-04-24T15:58:23.25188
+---------------------------------
+Parsing Steps Trace Until Error:
+---------------------------------
+Parsing started for the input: id + * id $
+
+Current stack content 0
+Current state (stack-top) is 0, next token is 'id'
+Fetched action from the table: s5
+
+Shift and goto state 5: push the token "id" and state 5 onto the stack
+Parse tree: token "id" becomes a node (leaf)
+Move to next token
+------------------------------------------------------------
+Current stack content 0id5
+Current state (stack-top) is 5, next token is '+'
+Fetched action from the table: r6
+
+Reduce using grammar rule 6: F -> id
+Stack content before reduce: 0id5
+Pop 1 symbols and their states (2 items) from the stack based on RHS of rule 6: [id]
+State revealed after pop: 0 (current stack content: 0)
+Push LHS (F) of grammar rule 6 onto stack
+Push new state from GOTO table onto stack: 3 (GOTO[0, F])
+Parse tree: grammar rule's LHS (F) becomes a node (parent) and popped tokens/non-terminals become its children
+Stack content after reduce: 0F3
+------------------------------------------------------------
+Current stack content 0F3
+Current state (stack-top) is 3, next token is '+'
+Fetched action from the table: r4
+
+Reduce using grammar rule 4: T -> F
+Stack content before reduce: 0F3
+Pop 1 symbols and their states (2 items) from the stack based on RHS of rule 4: [F]
+State revealed after pop: 0 (current stack content: 0)
+Push LHS (T) of grammar rule 4 onto stack
+Push new state from GOTO table onto stack: 2 (GOTO[0, T])
+Parse tree: grammar rule's LHS (T) becomes a node (parent) and popped tokens/non-terminals become its children
+Stack content after reduce: 0T2
+------------------------------------------------------------
+Current stack content 0T2
+Current state (stack-top) is 2, next token is '+'
+Fetched action from the table: r2
+
+Reduce using grammar rule 2: E -> T
+Stack content before reduce: 0T2
+Pop 1 symbols and their states (2 items) from the stack based on RHS of rule 2: [T]
+State revealed after pop: 0 (current stack content: 0)
+Push LHS (E) of grammar rule 2 onto stack
+Push new state from GOTO table onto stack: 1 (GOTO[0, E])
+Parse tree: grammar rule's LHS (E) becomes a node (parent) and popped tokens/non-terminals become its children
+Stack content after reduce: 0E1
+------------------------------------------------------------
+Current stack content 0E1
+Current state (stack-top) is 1, next token is '+'
+Fetched action from the table: s6
+
+Shift and goto state 6: push the token "+" and state 6 onto the stack
+Parse tree: token "+" becomes a node (leaf)
+Move to next token
+------------------------------------------------------------
+Current stack content 0E1+6
+Current state (stack-top) is 6, next token is '*'
+Fetched action from the table: ERROR (No action defined)
+ERROR: Syntax error. Unexpected token '*' at state 6.
+=================================
