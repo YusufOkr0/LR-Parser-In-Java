@@ -33,6 +33,10 @@ public class LRParser {
     }
 
     public void parse(String inputFileName) {
+        stateAndTokenStack.clear();
+        parseTreeStack.clear();
+        traceTable.clear();
+        rootNode = null;
         String logBaseDirectoryPath = LOGS_DIRECTORY_NAME + "/";
         String logFileName = inputFileName.replace("input", "log");
         File logDirectory = new File(logBaseDirectoryPath);
